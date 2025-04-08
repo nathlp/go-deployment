@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/joho/godotenv"
+	"github.com/labstack/echo/v4/middleware"
 	"io"
 	"log"
 	"mime/multipart"
@@ -26,6 +27,11 @@ func main() {
 	}
 
 	e := echo.New()
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:3000"},
+		AllowMethods: []string{echo.GET, echo.POST, echo.OPTIONS},
+	}))
+
 	e.POST("/upload", handleUpload)
 	e.GET("/health-check", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Server Available")
