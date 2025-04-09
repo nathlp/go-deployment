@@ -16,7 +16,7 @@ This project provides a simple Go-based API that enables uploading files and met
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/go-deployment.git
+git clone https://github.com/nathlp/go-deployment.git
 cd go-deployment
 ```
 
